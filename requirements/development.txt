@@ -1,0 +1,13 @@
+-r common.txt
+
+coverage
+django-debug-toolbar
+ipython
+django-extensions
+selenium
+
+sphinx
+sphinx_rtd_theme
+pyenchant
+sphinxcontrib-spelling
+recommonmark
