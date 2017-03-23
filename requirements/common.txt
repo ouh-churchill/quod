@@ -1,9 +1,9 @@
-Django==1.10.5
+Django
 wagtail
 wagtailmenus
-docutils==0.13.1
-django-environ==0.4.1
-markdown==2.6.8
+docutils
+django-environ
+markdown
 
 pytz
 pip
