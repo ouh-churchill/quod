@@ -53,10 +53,13 @@ THIRD_PARTY_APPS = [
 
     'modelcluster',
     'taggit',
+
+    'wagtail.contrib.modeladmin',
 ]
 
 # Apps specific for this project go here.
 LOCAL_APPS = [
+    # 'quodsite.website',
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -257,4 +260,8 @@ ADMIN_URL = r'^admin/'
 
 # Your common stuff: Below this line define 3rd party library settings
 # ------------------------------------------------------------------------------
-WAGTAIL_SITE_NAME = 'QUOD site'
+
+# Configuring Django for Wagtail - http://docs.wagtail.io/en/v1.9/advanced_topics/settings.html
+WAGTAIL_SITE_NAME = 'QUOD website'
+
+TAGGIT_CASE_INSENSITIVE = True
