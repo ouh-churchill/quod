@@ -55,11 +55,12 @@ THIRD_PARTY_APPS = [
     'taggit',
 
     'wagtail.contrib.modeladmin',
+    # 'wagtailmenus'
 ]
 
 # Apps specific for this project go here.
 LOCAL_APPS = [
-    # 'quodsite.website',
+    'quodsite.website',
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -118,8 +119,7 @@ MANAGERS = ADMINS
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
     # Raises ImproperlyConfigured exception if DATABASE_URL not in os.environ
-    'default': env.db('DATABASE_URL', default='postgres://localhost/diakonia'),
-    'fhirbase': env.db('DATABASE2_URL', default='postgres://localhost/fhirbase'),
+    'default': env.db('DATABASE_URL', default='postgres://localhost/quodsite'),
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
@@ -156,7 +156,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-dirs
         'DIRS': [
-            str(APPS_DIR.path('templates')),
+            str(APPS_DIR.path('website/templates')),
         ],
         'OPTIONS': {
             # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-debug
@@ -178,6 +178,8 @@ TEMPLATES = [
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
                 # Your stuff: custom template context processors go here
+                'wagtail.contrib.settings.context_processors.settings',
+                # 'wagtailmenus.context_processors.wagtailmenus',
             ],
         },
     },
@@ -193,7 +195,7 @@ STATIC_URL = '/static/'
 
 # See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
 STATICFILES_DIRS = (
-    str(APPS_DIR.path('static')),
+    str(APPS_DIR.path('website/static')),
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders

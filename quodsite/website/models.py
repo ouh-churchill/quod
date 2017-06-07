@@ -14,16 +14,31 @@ from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailsearch import index
+from wagtail.wagtailsnippets.models import register_snippet
+# from wagtailmenus.models import MenuPage
+
+
+# SNIPPETS
+@register_snippet
+class Publication(models.Model):
+    title = models.CharField(max_length=255)
+    url = models.URLField(null=True, blank=True)
+    authors = models.CharField(max_length=255, blank=True)
+
+    panels = [
+        FieldPanel('title'),
+        FieldPanel('url'),
+        FieldPanel('authors')
+    ]
+
+    def __str__(self):
+        return "{0} : {1}".format(self.title, self.authors)
+
+
+# SNIPPET LINKS
 
 
 # BLOCKS
-class PublicationBlock(blocks.StructBlock):
-    title = blocks.CharBlock()
-    url = blocks.URLBlock(required=False)
-    authors = blocks.CharBlock()
-
-    class Meta:
-        label = 'Publication'
 
 
 class QandABlock(blocks.StructBlock):
@@ -43,12 +58,12 @@ class MultiPage(Page):
         ('heading', blocks.CharBlock(classname="full title")),
         ('paragraph', blocks.RichTextBlock()),
         ('image', ImageChooserBlock()),
-        ('publications_list', blocks.ListBlock(
-            'publication', PublicationBlock()
-        )),
-        ('qa_list', blocks.ListBlock(
-            'entry', QandABlock()
-        )),
+        # ('publications_list', blocks.ListBlock(
+        #     'publication', PublicationBlock()
+        # )),
+        # ('qa_list', blocks.ListBlock(
+        #     'entry', QandABlock()
+        # )),
     ])
     date = models.DateField("Post date")
     feed_image = models.ForeignKey(
