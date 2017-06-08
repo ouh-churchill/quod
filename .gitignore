@@ -51,7 +51,6 @@ coverage.xml
 
 # Django stuff:
 *.log
-local_settings.py
 
 # Flask stuff:
 instance/
@@ -91,3 +90,6 @@ ENV/
 # OS X files
 .DS_Store
 .idea/
+
+# Project locations
+quodsite/media

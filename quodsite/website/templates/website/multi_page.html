@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load wagtailimages_tags %}
 
 {% block content %}
 	<!-- you can use the class main-raised if you want the main area to be as a page with shadows -->
@@ -7,7 +7,10 @@
 		<div class="container">
 {#            {% breadcrumbs %}#}
 			<!-- here you can add your content -->
-            {{ self.title }}
+            {{ self.feed_image }}
+            {% image self.feed_image max-1000x1000%}
+
+            <hr>
 
             {{ self.slug }}
 
@@ -16,6 +19,11 @@
             {{ self.owner }}
 
             {{ self.first_published_at }}
+
+            <p>{{ self.author }} on {{ self.date }}</p>
+
+            {{ self.body }}
+
 		</div>
 	</div>
 {% endblock %}

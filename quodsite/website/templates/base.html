@@ -46,50 +46,54 @@
 		</div>
 	</div>
 
+    {% block content %}
 	<!-- you can use the class main-raised if you want the main area to be as a page with shadows -->
-	<div class="main">
+	<div class="main main-raised">
 		<div class="container">
 {#            {% breadcrumbs %}#}
 			<!-- here you can add your content -->
-            {% block content %}{% endblock %}
+
 		</div>
 	</div>
+    {% endblock %}
+
+    {% wagtailuserbar %}
+
+    <footer class="footer">
+        <div class="container">
+            <nav class="pull-left">
+                <ul>
+                    <li>
+                        <a href="#">
+                            QUOD
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                           About Us
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                           Blog
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Licenses
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="copyright pull-right">
+                &copy; 2016-17 <a href="http://www.ox.ac.uk/">University of Oxford</a>,
+                made with <i class="fa fa-heart heart"></i> by Carl Marshall,
+                assisted by <a href="http://www.creative-tim.com">Creative Tim</a>
+            </div>
+        </div>
+    </footer>
 </div>
 
-{% wagtailuserbar %}
-	    <footer class="footer">
-	        <div class="container">
-	            <nav class="pull-left">
-	                <ul>
-	                    <li>
-	                        <a href="#">
-	                            QUOD
-	                        </a>
-	                    </li>
-						<li>
-	                        <a href="#">
-	                           About Us
-	                        </a>
-	                    </li>
-	                    <li>
-	                        <a href="#">
-	                           Blog
-	                        </a>
-	                    </li>
-	                    <li>
-	                        <a href="#">
-	                            Licenses
-	                        </a>
-	                    </li>
-	                </ul>
-	            </nav>
-	            <div class="copyright pull-right">
-                    &copy; 2016-17 <a href="http://www.ox.ac.uk/">University of Oxford</a>,
-                    made with <i class="fa fa-heart heart"></i> by Carl Marshall,
-                    assisted by <a href="http://www.creative-tim.com">Creative Tim</a>
-	            </div>
-	        </div>
-	    </footer>
 
 </body>
 
