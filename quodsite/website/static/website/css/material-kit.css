@@ -3162,7 +3162,7 @@ h2.title {
     left: 0;
     top: 0;
     content: "";
-    background-color: rgba(0, 0, 0, 0.4); }
+    background-color: rgba(0, 0, 0, 0.2); }
   .header-filter .container {
     z-index: 2;
     position: relative; }
@@ -3294,9 +3294,9 @@ h2.title {
     margin-right: 10px; } }
 
 .default-page .header {
-  height: 70vh; }
+  height: 40vh; }
   .default-page .header .container {
-    padding-top: 26vh;
+    padding-top: 16vh;
     color: #FFFFFF; }
   .default-page .header .share {
     margin-top: 150px; }
@@ -3307,3 +3307,10 @@ h2.title {
 
 .default-page .wrapper {
   background: #CCCCCC; }
+
+.breadcrumb .brand-info {
+  background-color: #03a9f4; }
+  .breadcrumb .brand-info a {
+    color: #fff; }
+  .breadcrumb .brand-info li.active {
+    color: #eee; }

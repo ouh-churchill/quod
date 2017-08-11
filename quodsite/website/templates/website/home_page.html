@@ -20,9 +20,10 @@
 
 <!-- you can use the class main-raised if you want the main area to be as a page with shadows -->
 {% block content %}
-    <!-- Start of content from quodsite/website/templates/website/multi_page.html -->
+    <!-- Start of content from quodsite/website/templates/website/home_page.html -->
 	<div class="main main-raised">
 		<div class="container">
+{#            {% breadcrumbs %}#}
             {% include "includes/breadcrumbs.html" %}
 
             <article>
@@ -35,10 +36,8 @@
                     {% endif %}
                 {% endfor %}
             </article>
-            <p class="text-muted">Last edited by {{ self.author }} on {{ self.date }}</p>
-
             {#<pre> {% filter force_escape %} {% debug %} {% endfilter %} </pre>#}
 		</div>
 	</div>
-    <!-- End of content from quodsite/website/templates/website/multi_page.html -->
+    <!-- End of content from quodsite/website/templates/website/home_page.html -->
 {% endblock %}

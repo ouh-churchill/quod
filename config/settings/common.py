@@ -55,7 +55,8 @@ THIRD_PARTY_APPS = [
     'taggit',
 
     'wagtail.contrib.modeladmin',
-    # 'wagtailmenus'
+    'wagtailmenus',
+    'wagtail.contrib.table_block',
 ]
 
 # Apps specific for this project go here.
@@ -179,7 +180,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 # Your stuff: custom template context processors go here
                 'wagtail.contrib.settings.context_processors.settings',
-                # 'wagtailmenus.context_processors.wagtailmenus',
+                'wagtailmenus.context_processors.wagtailmenus',
             ],
         },
     },

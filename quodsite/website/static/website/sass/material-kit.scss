@@ -25,10 +25,10 @@
 
 .default-page {
     .header{
-        height: 70vh;
+        height: 40vh;
 
         .container{
-            padding-top: 26vh;
+            padding-top: 16vh;
             color: #FFFFFF;
         }
 
@@ -45,5 +45,18 @@
 
     .wrapper{
         background: #CCCCCC;
+    }
+}
+
+.breadcrumb {
+    .brand-info{
+        background-color: $brand-info;
+
+        a {
+            color:#fff;
+        }
+        li.active {
+            color: #eee;
+        }
     }
 }

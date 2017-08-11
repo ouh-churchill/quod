@@ -1,4 +1,4 @@
-{% load wagtailuserbar static %}
+{% load wagtailuserbar static menu_tags %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -36,6 +36,7 @@
 <!-- end navbar -->
 
 <div class="wrapper default-page">
+    {% block content-header %}
 	<div class="header header-filter" style="background-image: url('https://images.unsplash.com/photo-1464262509267-2b90beb4cffc?crop=entropy&dpr=2&fit=crop&fm=jpg&h=750&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1450');">
 		<div class="container">
 			<div class="row">
@@ -45,6 +46,7 @@
 			</div>
 		</div>
 	</div>
+    {% endblock %}
 
     {% block content %}
 	<!-- you can use the class main-raised if you want the main area to be as a page with shadows -->
@@ -63,26 +65,7 @@
         <div class="container">
             <nav class="pull-left">
                 <ul>
-                    <li>
-                        <a href="#">
-                            QUOD
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                           About Us
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                           Blog
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            Licenses
-                        </a>
-                    </li>
+                    {% flat_menu 'footer-menu' %}
                 </ul>
             </nav>
             <div class="copyright pull-right">
