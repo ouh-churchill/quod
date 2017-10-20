@@ -1,6 +1,5 @@
 Django
 wagtail
-wagtailmenus
 docutils
 django-environ
 markdown

@@ -55,7 +55,6 @@ THIRD_PARTY_APPS = [
     'taggit',
 
     'wagtail.contrib.modeladmin',
-    'wagtailmenus',
     'wagtail.contrib.table_block',
 ]
 

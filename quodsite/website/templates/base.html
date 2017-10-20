@@ -1,4 +1,4 @@
-{% load wagtailuserbar static menu_tags %}
+{% load wagtailuserbar static quodsite_tags %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -28,7 +28,9 @@
 <body class="{% block body_class %}{% endblock %}"> {# Override this block to set custom body classes on a template by template basis #}
 
 <!-- Navbar will come here -->
-{% include 'includes/navbar.html' %}
+{#{% include 'includes/navbar.html' %}#}
+{% get_site_root as site_root %}
+{% top_menu parent=site_root calling_page=self %}
 
 {% if request.is_preview %}
     <p>PREVIEW MODE</p>
@@ -65,11 +67,11 @@
         <div class="container">
             <nav class="pull-left">
                 <ul>
-                    {% flat_menu 'footer-menu' %}
+                    <li><a href="https://www.ox.ac.uk/">University of Oxford</a></li>
                 </ul>
             </nav>
             <div class="copyright pull-right">
-                &copy; 2016-17 <a href="http://www.ox.ac.uk/">University of Oxford</a>,
+                &copy; 2016-17 <a href="https://www.ox.ac.uk/">University of Oxford</a>,
                 made with <i class="fa fa-heart heart"></i> by Carl Marshall,
                 assisted by <a href="http://www.creative-tim.com">Creative Tim</a>
             </div>

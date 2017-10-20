@@ -18,7 +18,8 @@ from wagtail.wagtailsearch import index
 from wagtail.wagtailsnippets.models import register_snippet
 from wagtail.wagtailsnippets.blocks import SnippetChooserBlock
 from wagtail.contrib.table_block.blocks import TableBlock
-from wagtailmenus.models import MenuPage
+
+# from wagtailmenus.models import MenuPage, MenuPageMixin
 
 
 # SNIPPETS
@@ -78,7 +79,7 @@ class QandABlock(blocks.StructBlock):
 # PAGES
 
 # Home Page
-class HomePage(MenuPage):
+class HomePage(Page):
     """
     Single root page for a bespoke home page for QUOD
 
@@ -141,7 +142,7 @@ class HomePage(MenuPage):
 
 
 # Multipurpose Page
-class MultiPage(MenuPage):
+class MultiPage(Page):
     """
     Multipurpose page model, allowing pretty much all types to be combined onto one page
 

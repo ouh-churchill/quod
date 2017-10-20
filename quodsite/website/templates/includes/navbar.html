@@ -1,5 +1,5 @@
-{% load static menu_tags %}
-<!-- Start quodsite/templates/includes/navbar.html -->
+{% load static wagtailcore_tags quodsite_tags %}
+<!-- Start quodsite/website/templates/includes/navbar.html -->
 <nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll">
     <div class="container">
         <div class="navbar-header">
@@ -27,10 +27,22 @@
         <div class="collapse navbar-collapse" id="navigation-index">
             <ul class="nav navbar-nav navbar-right">
             {% block menu %}
-                {% main_menu %}
+
+                {% for menuitem in menuitems %}
+                    <li class="{% if menuitem.show_dropdown %}dropdown{% endif %}{% if menuitem.active %} active{% endif %}">
+                        {% if menuitem.show_dropdown %}
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">{{ menuitem.title }} <b class="caret"></b></a>
+                            {% top_menu_children parent=menuitem %}
+                        {% else %}
+                            <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+
+                {% if request.user.is_staff %}<li><a href="/cms">Quodsite Admin</a></li>{% endif %}
             {% endblock %}
             </ul>
         </div>
     </div>
 </nav>
-<!-- End of quodsite/templates/includes/navbar.html -->
+<!-- End of quodsite/website/templates/includes/navbar.html -->
