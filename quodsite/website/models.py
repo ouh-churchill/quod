@@ -19,9 +19,6 @@ from wagtail.wagtailsnippets.models import register_snippet
 from wagtail.wagtailsnippets.blocks import SnippetChooserBlock
 from wagtail.contrib.table_block.blocks import TableBlock
 
-# from wagtailmenus.models import MenuPage, MenuPageMixin
-
-
 # SNIPPETS
 @register_snippet
 class Publication(models.Model):
