@@ -1425,7 +1425,6 @@ output {
   .form-group.label-placeholder:not(.is-empty) label.control-label {
     display: none; }
   .form-group .help-block {
-    position: absolute;
     display: none; }
   .form-group.is-focused .form-control {
     outline: none;
@@ -3293,20 +3292,24 @@ h2.title {
     margin-left: 10px;
     margin-right: 10px; } }
 
-.default-page .header {
-  height: 40vh; }
-  .default-page .header .container {
-    padding-top: 16vh;
-    color: #FFFFFF; }
-  .default-page .header .share {
-    margin-top: 150px; }
-  .default-page .header h1 {
-    font-weight: 600; }
-  .default-page .header .title {
-    color: #FFFFFF; }
+.default-page .header .container {
+  padding-top: 16vh;
+  color: #FFFFFF; }
+
+.default-page .header .share {
+  margin-top: 150px; }
+
+.default-page .header h1 {
+  font-weight: 600; }
+
+.default-page .header .title {
+  color: #FFFFFF; }
 
 .default-page .wrapper {
   background: #CCCCCC; }
+
+.default-page .card-login .content {
+  padding: 0 30px; }
 
 .breadcrumb .brand-info {
   background-color: #03a9f4; }

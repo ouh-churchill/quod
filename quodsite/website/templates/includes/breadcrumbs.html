@@ -8,6 +8,8 @@
                 <li><a href="{{ page.url }}">{{ page.title }}</a></li> <!-- {% pageurl page %} -->
             {% endif %}
         {% endfor %}
+    {% else %}
+        <li><a href="/">Home</a></li>
     {% endif %}
 
     <li class="active">{{ self.title }}</li>

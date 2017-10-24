@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.static import static
-from django.contrib import admin
+from django.contrib import admin, auth
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
 
@@ -31,6 +31,7 @@ urlpatterns = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + [
 
     # Django Admin, use {% raw %}{% url 'admin:index' %}{% endraw %}
     url(settings.ADMIN_URL, include(admin.site.urls)),
+    url('^auth/', include('django.contrib.auth.urls')),  # Removed namespace="users" because causes more issues
 
     url(r'^cms/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),

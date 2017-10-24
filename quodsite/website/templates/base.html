@@ -39,11 +39,13 @@
 
 <div class="wrapper default-page">
     {% block content-header %}
-	<div class="header header-filter" style="background-image: url('https://images.unsplash.com/photo-1464262509267-2b90beb4cffc?crop=entropy&dpr=2&fit=crop&fm=jpg&h=750&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1450');">
+{#        photo-1453928582365-b6ad33cbcf64  -- laptop and coffee cup  #}
+{#        photo-1484734005183-90cabb43d3b7  -- vials in tray  #}
+	<div class="header header-filter" style="background-image: url('https://images.unsplash.com/photo-1504439468489-c8920d796a29?crop=entropy&dpr=2&fit=crop&fm=jpg&h=750&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1450'); height: 40vh;">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3">
-					<h1 class="title text-center">{{ self.title }}</h1>
+					<h1 class="title text-center">{% block page-header %}{{ self.title }}{% endblock %}</h1>
 				</div>
 			</div>
 		</div>

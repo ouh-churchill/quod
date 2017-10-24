@@ -208,7 +208,7 @@
 
   // Help blocks - position: absolute approach - uses no vertical space, text wrapping - not so good.
   .help-block {
-    position: absolute; // do not use position: absolute because width/wrapping isn't automatic and overflows occur
+    //position: absolute; // do not use position: absolute because width/wrapping isn't automatic and overflows occur -- removed CM
     display: none;
   }
 

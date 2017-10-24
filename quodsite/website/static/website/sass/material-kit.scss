@@ -25,8 +25,6 @@
 
 .default-page {
     .header{
-        height: 40vh;
-
         .container{
             padding-top: 16vh;
             color: #FFFFFF;
@@ -45,6 +43,12 @@
 
     .wrapper{
         background: #CCCCCC;
+    }
+
+    .card-login {
+        .content {
+            padding: 0 30px;
+        }
     }
 }
 
