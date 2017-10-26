@@ -2,42 +2,35 @@
 {% load wagtailimages_tags wagtailcore_tags %}
 
 {% block content-header %}
-{% if self.feed_image %}
-<div class="header header-filter" style="background-image: url('{{ self.feed_image.file.url }}');">
-{% else %}
-<div class="header header-filter" style="background-image: url('https://images.unsplash.com/photo-1464262509267-2b90beb4cffc?crop=entropy&dpr=2&fit=crop&fm=jpg&h=750&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1450');">
-{% endif %}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <h1 class="title text-center">{{ self.title }}</h1>
-	            <h4>{{ self.subtitle }}</h4>
+    {% if self.feed_image %}
+        <div class="header header-filter" style="background-image: url('{{ self.feed_image.file.url }}'); height: 40vh;">
+    {% else %}
+        <div class="header header-filter"
+             style="background-image: url('https://images.unsplash.com/photo-1464262509267-2b90beb4cffc?crop=entropy&dpr=2&fit=crop&fm=jpg&h=750&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1450'); height: 40vh;">
+    {% endif %}
+            <div class="container" {% if self.subtitle|length > 0 %}style="padding-top: 11vh;"{% endif %}>
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <h1 class="title text-center">{{ self.title }}</h1>
+                        <h4>{{ self.subtitle }}</h4>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 {% endblock %}
 
 <!-- you can use the class main-raised if you want the main area to be as a page with shadows -->
 {% block content %}
     <!-- Start of content from quodsite/website/templates/website/home_page.html -->
-	<div class="main main-raised">
-		<div class="container">
-{#            {% breadcrumbs %}#}
-            {% include "includes/breadcrumbs.html" %}
-
-            <article>
-                {% for block in page.body %}
-                    <!-- Blocktype: {{ block.block_type }} -->
-                    {% if block.block_type == 'heading' %}
-                        <h1>{{ block.value }}</h1>
-                    {% else %}
-                        {% include_block block %}
-                    {% endif %}
-                {% endfor %}
-            </article>
-            {#<pre> {% filter force_escape %} {% debug %} {% endfilter %} </pre>#}
-		</div>
-	</div>
+    <article>
+        {% for block in page.body %}
+            <!-- Blocktype: {{ block.block_type }} -->
+            {% if block.block_type == 'heading' %}
+                <h1>{{ block.value }}</h1>
+            {% else %}
+                {% include_block block %}
+            {% endif %}
+        {% endfor %}
+    </article>
     <!-- End of content from quodsite/website/templates/website/home_page.html -->
 {% endblock %}

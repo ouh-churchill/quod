@@ -3308,8 +3308,10 @@ h2.title {
 .default-page .wrapper {
   background: #CCCCCC; }
 
-.default-page .card-login .content {
-  padding: 0 30px; }
+.default-page .card-login {
+  margin-bottom: 1em; }
+  .default-page .card-login .content {
+    padding: 0 30px; }
 
 .breadcrumb .brand-info {
   background-color: #03a9f4; }

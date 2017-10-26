@@ -19,29 +19,19 @@
 		"oF": 0,
 		"oS": 0
 		},
-	"\/css\/demo.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/css\/demo-min.css",
-		"oF": 0,
-		"oS": 0
-		},
 	"\/css\/material-kit.css": {
 		"aP": 1,
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/css\/material-kit-min.css",
 		"oF": 0,
 		"oS": 0
 		},
 	"\/css\/material-kit.css.map": {
 		"ft": 8192,
-		"oA": 2,
+		"oA": 1,
 		"oAP": "\/css\/material-kit.css.map",
 		"oF": 0
 		},

@@ -20,9 +20,7 @@
 	<!-- CSS Files -->
     <link href="{% static "website/css/bootstrap.min.css" %}" rel="stylesheet" />
     <link href="{% static "website/css/material-kit.css" %}" rel="stylesheet"/>
-
     {% block extra_css %}{% endblock %} {# Override this block in individual templates in order to add stylesheets on a template by template basis #}
-
 </head>
 
 <body class="{% block body_class %}{% endblock %}"> {# Override this block to set custom body classes on a template by template basis #}
@@ -52,16 +50,15 @@
 	</div>
     {% endblock %}
 
-    {% block content %}
-	<!-- you can use the class main-raised if you want the main area to be as a page with shadows -->
-	<div class="main main-raised">
-		<div class="container">
-{#            {% breadcrumbs %}#}
-			<!-- here you can add your content -->
-
-		</div>
-	</div>
-    {% endblock %}
+    <div class="main main-raised">
+        <div class="container">
+            {% include "includes/breadcrumbs.html" %}
+            {% block content %}
+            <!-- you can use the class main-raised if you want the main area to be as a page with shadows -->
+                    <!-- here you can add your content -->
+            {% endblock %}
+        </div>
+    </div>
 
     {% wagtailuserbar %}
 

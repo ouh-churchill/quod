@@ -16,19 +16,10 @@
 <!-- you can use the class main-raised if you want the main area to be as a page with shadows -->
 {% block content %}
     <!-- Start of content from quodsite/website/templates/wagtailcore/page.html -->
-	<div class="main main-raised">
-		<div class="container">
-            {% include "includes/breadcrumbs.html" %}
+    <article>
+        <p>This is a default Wagtail CMS page, and as such, has no content to display. Consider me a placeholder.</p>
+    </article>
 
-            <article>
-                <p>This is a default Wagtail CMS page, and as such, has no content to display. Consider me a placeholder.</p>
-            </article>
-
-            <p class="text-muted">{% if self.author|length > 0 %}Last edited by {{ self.author }} on {{ self.date }}.{% endif %} First published on {{ self.first_published_at }}</p>
-
-
-            {#<pre> {% filter force_escape %} {% debug %} {% endfilter %} </pre>#}
-		</div>
-	</div>
+    <p class="text-muted">{% if self.author|length > 0 %}Last edited by {{ self.author }} on {{ self.date }}.{% endif %} First published on {{ self.first_published_at }}</p>
     <!-- End of content from quodsite/website/templates/wagtailcore/page.html -->
 {% endblock %}
