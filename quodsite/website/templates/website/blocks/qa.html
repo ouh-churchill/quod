@@ -1,9 +1,13 @@
 {% load wagtailcore_tags quodsite_tags %}
 <!-- Start quodsite/website/templates/website/blocks/qa.html -->
 
-<span><small class="text-muted">QUESTION</small></span>
-{{ value.question|richtext }}
+<dt>
+    <span><small class="text-muted">QUESTION</small></span>
+    {{ value.question|richtext }}
+</dt>
 
-<span><small class="text-muted">ANSWER</small></span>
-{{ value.answer|richtext }}
+<dd>
+    <span><small class="text-muted">ANSWER</small></span>
+    {{ value.answer|richtext }}
+</dd>
 <!-- End quodsite/website/templates/website/blocks/qa.html -->

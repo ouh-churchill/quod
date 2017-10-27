@@ -1,5 +1,7 @@
 <!-- Start quodsite/website/templates/website/blocks/qa_list.html -->
+<dl class="">
 {% for block in self %}
-    {{ block }} 
+    {% include 'website/blocks/qa.html' with value=block %}
 {% endfor %}
+</dl>
 <!-- End quodsite/website/templates/website/blocks/qa_list.html -->

@@ -99,7 +99,7 @@ class HomePage(Page):
         latest_revision_created_at - DateTime
 
     """
-    subtitle = models.CharField(max_length=255)
+    subtitle = models.CharField(max_length=255, null=True, blank=True)
     body = StreamField([
         ('heading', blocks.CharBlock(classname="full title")),
         ('text', blocks.RichTextBlock()),
@@ -163,7 +163,8 @@ class MultiPage(Page):
     """
 
     # Database fields
-    author = models.CharField(max_length=255)
+    subtitle = models.CharField(max_length=255, null=True, blank=True)
+    author = models.CharField(max_length=255)  # Because the author may not be the person entering it on the website
     body = StreamField([
         ('heading', blocks.CharBlock(classname="full title")),
         ('text', blocks.RichTextBlock()),
@@ -192,6 +193,7 @@ class MultiPage(Page):
     # Editor panels configuration
 
     content_panels = Page.content_panels + [
+        FieldPanel('subtitle'),
         FieldPanel('author'),
         FieldPanel('date'),
         StreamFieldPanel('body'),

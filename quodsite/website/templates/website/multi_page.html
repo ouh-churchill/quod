@@ -22,18 +22,52 @@
 
 {% block content %}
     <!-- Start of content from quodsite/website/templates/website/multi_page.html -->
-    <article>
-        {% for block in page.body %}
-            <!-- Blocktype: {{ block.block_type }} -->
-            {% if block.block_type == 'heading' %}
-                <h1>{{ block.value }}</h1>
-            {% else %}
-                {% include_block block %}
-            {% endif %}
-        {% endfor %}
-    </article>
 
-    <p class="text-muted">{% if self.author|length > 0 %}Last edited by {{ self.author }} on {{ self.date }}
-        .{% endif %} First published on {{ self.first_published_at }}</p>
+    <p class="text-muted"><i>{% if self.author|length > 0 %}Written by {{ self.author }} and first published on {{ self.first_published_at|date }}.{% endif %}
+        Last updated {% if self.owner.get_full_name|length > 0 %}by {{ self.owner.get_full_name }}{% endif %} on {{ self.latest_revision_created_at|date }}.</i></p>
+
+    {% if page.related_links.all|length > 0 %}
+        <div class="row">
+            <div class="col-md-9 col-sm-8">
+                <article>
+                    {% for block in page.body %}
+                        <!-- Blocktype: {{ block.block_type }} -->
+                        {% if block.block_type == 'heading' %}
+                            <h2>{{ block.value }}</h2>
+                        {% else %}
+                            {% include_block block %}
+                        {% endif %}
+                    {% endfor %}
+                </article>
+            </div>
+            <div class="col-md-3 col-sm-4">
+                <div class="card card-sidebar">
+                    <div class="header header-info text-center">
+                        <h4>Related Links</h4>
+                    </div>
+                    <div class="content">
+                        <ul>
+                            {% for link in page.related_links.all %}
+                                <li><a href="{{ link.url }}" title="{{ link.name }}">{{ link.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <article>
+            {% for block in page.body %}
+                <!-- Blocktype: {{ block.block_type }} -->
+                {% if block.block_type == 'heading' %}
+                    <h2>{{ block.value }}</h2>
+                {% else %}
+                    {% include_block block %}
+                {% endif %}
+            {% endfor %}
+        </article>
+    {% endif %}
+
+    </div>
     <!-- End of content from quodsite/website/templates/website/multi_page.html -->
 {% endblock %}

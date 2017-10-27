@@ -52,6 +52,17 @@
             padding: 0 30px;
         }
     }
+
+    .card-sidebar{
+        margin-top: 45px;
+
+        .header{
+            margin-top: -$margin-base * 2;
+        }
+        //.nav-tabs{
+        //    background: transparent;
+        //}
+    }
 }
 
 .breadcrumb {
