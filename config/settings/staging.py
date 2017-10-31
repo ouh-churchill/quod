@@ -15,11 +15,11 @@ print("DEBUG: Loading settings from staging")
 
 # django-secure
 # ------------------------------------------------------------------------------
-INSTALLED_APPS += ["djangosecure", ]
-SECURITY_MIDDLEWARE = [
-    'djangosecure.middleware.SecurityMiddleware',
-]
-MIDDLEWARE = SECURITY_MIDDLEWARE + MIDDLEWARE
+# INSTALLED_APPS += ["djangosecure", ]
+# SECURITY_MIDDLEWARE = [
+#     'djangosecure.middleware.SecurityMiddleware',
+# ]
+# MIDDLEWARE = SECURITY_MIDDLEWARE + MIDDLEWARE
 
 # set this to 60 seconds and then to 518400 when you can prove it works
 SECURE_HSTS_SECONDS = 60
