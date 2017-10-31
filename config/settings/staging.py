@@ -11,7 +11,7 @@ Local settings
 
 from .common import *  # noqa
 
-print("DEBUG: Loading settings from production")
+print("DEBUG: Loading settings from staging")
 
 # django-secure
 # ------------------------------------------------------------------------------
@@ -36,7 +36,7 @@ SECURE_SSL_REDIRECT = env.bool("DJANGO_SECURE_SSL_REDIRECT", default=True)
 # Hosts/domain names that are valid for this site
 # See https://docs.djangoproject.com/en/1.6/ref/settings/#allowed-hosts
 # ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['example.com']) -- In Common.py
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
 # END SITE CONFIGURATION
 
 INSTALLED_APPS += ["gunicorn", ]
