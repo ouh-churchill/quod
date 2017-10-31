@@ -197,5 +197,11 @@ $ pip install -r requirements/staging.txt
 $ cp config/settings/.env.template config/settings/.env
 $ vi config/settings/.env    # Put in local setting values
 $ python manage.py check
+DEBUG: Loading settings from production
+System check identified no issues (0 silenced).
+
+$ python manage.py migrate
+$ python manage.py collectstatic
+$ python manage.py createsuperuser
 ```
 
