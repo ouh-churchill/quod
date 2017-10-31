@@ -195,6 +195,7 @@ $ mkdir -p var/log var/run etc/nginx/sites-available htdocs/media etc/gunicorn
 $ cd quod_repo/
 $ pip install -r requirements/staging.txt
 $ cp config/settings/.env.template config/settings/.env
-$ vi config/settings/.env
+$ vi config/settings/.env    # Put in local setting values
+$ python manage.py check
 ```
 
