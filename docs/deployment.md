@@ -92,7 +92,7 @@ To                         Action      From
 443 (v6)                   ALLOW       Anywhere (v6)   
 ```
 
-By default this enables a server on port 80, and serves a file from `/var/www/html/index.html`. Nginx configuration files at at `/etc/nginx` and the `default` config is in *sites-available*, linked to from *sites-enabled*.
+By default this enables a server on port 80, and serves a file from `/var/www/html/index.html`. Nginx configuration files at at `/etc/nginx` and the `default` config is in *sites-available*, linked to from *sites-enabled*. 
 
 ```
 # Create new projects folder and worker group
@@ -107,6 +107,37 @@ $ sudo usermod -aG worker carl
 Modify the default configuration for nginx (`sudo vi sites-available/default`):
 
 * Set server_name to FQDN for machine
+* Add a location for /runserver/ to reverse proxy port 8000 for the runserver django command to be tested via
+
+```
+location /runserver {
+         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+         proxy_set_header X-Forwarded-Protocol $scheme;
+         proxy_set_header X-Real-IP $remote_addr;
+         proxy_set_header Host $http_host;
+         proxy_set_header X-Scheme $scheme;
+         
+    proxy_set_header X-Real-IP  $remote_addr;
+    proxy_set_header X-Forwarded-For $remote_addr;
+    proxy_set_header Host $host;
+    proxy_pass http://localhost:8000/;
+}
+```
+ 
+NB: The trailing slash on the proxy_pass address, this is critical to ensure the URI is rewritten as `location /foo { ...} ` from `{proxy}http://localhost/foo/bar/` to `{app}http://localhost/bar/`
+
+##### SSL Cert 
+
+* Make CSR
+* Request Cert via ITSS approach
+* Confirm request by email
+* Receive email with Cert attachment
+* Copy the all-certificates folder to server
+* create crt file by concatenating the three crt files in the folder (because the PEM doesn't have all three, and nginx complains)
+* add config to the default site linking to the private.pem and the new crt file
+* restart the service
+
+Don't forget to restart the service after changes with `sudo systemctl restart nginx`
 
 
 #### VirtualEnvWrapper Installation
