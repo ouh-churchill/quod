@@ -1,5 +1,5 @@
-{% load wagtailcore_tags %}
-
+{% load wagtailcore_tags quodsite_tags %}
+{% get_site_root as site_root %}
 <nav>
     <ol class="breadcrumb" role="navigation">
     {% if self.get_ancestors|length > 1 %}
@@ -9,7 +9,7 @@
             {% endif %}
         {% endfor %}
     {% else %}
-        <li><a href="{{ request.META.HTTP_NAME }}">Home</a></li>
+        <li><a href="{% pageurl site_root %}">Home</a></li>
     {% endif %}
 
     <li class="active">{{ self.title }}</li>
