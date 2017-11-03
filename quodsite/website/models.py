@@ -132,7 +132,7 @@ class HomePage(Page):
         ImageChooserPanel('feed_image'),
     ]
 
-    parent_page_types = []  # Aka, must not have any parent, it is root!
+    # parent_page_types = []  # Aka, must not have any parent, it is root!
 
     class Meta:
         verbose_name = "Homepage"

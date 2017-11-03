@@ -236,3 +236,8 @@ $ python manage.py collectstatic
 $ python manage.py createsuperuser
 ```
 
+
+Quick Reference:
+
+* `git pull --all; sudo supervisorctl restart all;` for when code has been edited
+* `sudo systemctl restart nginx` for when nginx config has been edited

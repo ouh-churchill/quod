@@ -29,8 +29,7 @@ urlpatterns = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + [
     # url(r'^$', TemplateView.as_view(template_name='pages/home.html'), name='home'),
     # url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name='about'),
 
-    # Django Admin, use {% raw %}{% url 'admin:index' %}{% endraw %}
-    url(settings.ADMIN_URL, include(admin.site.urls)),
+    url(settings.ADMIN_URL, include(admin.site.urls)),   # default=r'^admin/'
     url('^auth/', include('django.contrib.auth.urls')),  # Removed namespace="users" because causes more issues
 
     url(r'^cms/', include(wagtailadmin_urls)),
