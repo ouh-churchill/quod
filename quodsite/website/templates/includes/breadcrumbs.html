@@ -9,7 +9,7 @@
             {% endif %}
         {% endfor %}
     {% else %}
-        <li><a href="/">Home</a></li>
+        <li><a href="{{ request.META.HTTP_NAME }}">Home</a></li>
     {% endif %}
 
     <li class="active">{{ self.title }}</li>
