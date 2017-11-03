@@ -13,6 +13,9 @@ from .common import *  # noqa
 
 print("DEBUG: Loading settings from staging")
 
+# Because we're behind a reverse proxy, pay attention to where the request is coming from
+USE_X_FORWARDED_HOST = True
+
 # django-secure
 # ------------------------------------------------------------------------------
 # INSTALLED_APPS += ["djangosecure", ]
