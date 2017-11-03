@@ -1,13 +1,13 @@
 #!/bin/bash
 
 NAME="quod_app"                                   # Name of the application
-APP_ROOT=/sites/quod                          # Application root path
+APP_ROOT=/sites/quod                              # Application root path
 DJANGODIR=$APP_ROOT/quod_repo                     # Django project directory
 SOCKFILE=$APP_ROOT/var/run/wsgi.socket            # we will communicte using this unix socket
 USER=quod-app-user                                # the user to run as
 GROUP=worker                                      # the group to run as
 NUM_WORKERS=3                                     # how many worker processes should Gunicorn spawn
-DJANGO_SETTINGS_MODULE=config.settings.staging # which settings file should Django use
+DJANGO_SETTINGS_MODULE=config.settings.staging    # which settings file should Django use
 DJANGO_WSGI_MODULE=config.wsgi                    # WSGI module name
 PID_FILE=$APP_ROOT/var/run/gunicorn.pid
 ACCESS_LOG=$APP_ROOT/var/log/gunicorn_access.log
