@@ -110,7 +110,6 @@ ADMINS = (
 )
 
 
-
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#managers
 MANAGERS = ADMINS
 
@@ -196,7 +195,7 @@ TEMPLATES = [
 STATIC_ROOT = env('STATIC_FILES_ROOT', default=str(ROOT_DIR('staticfiles')))
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-url
-STATIC_URL = '/static/'
+STATIC_URL = env('STATIC_FILES_URL', default='/static/')
 
 # See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
 STATICFILES_DIRS = (
@@ -215,7 +214,7 @@ STATICFILES_FINDERS = (
 MEDIA_ROOT = env('MEDIA_FILES_ROOT', default=str(APPS_DIR('media')))
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#media-url
-MEDIA_URL = '/media/'
+MEDIA_URL = env('MEDIA_FILES_URL', default='/media/')
 
 # URL Configuration
 # ------------------------------------------------------------------------------
@@ -247,6 +246,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+SESSION_COOKIE_PATH = env('SESSION_COOKIE_PATH', default='/')
+
 # Some really nice defaults
 ACCOUNT_AUTHENTICATION_METHOD = 'username'
 ACCOUNT_EMAIL_REQUIRED = True
@@ -259,15 +260,13 @@ ACCOUNT_ALLOW_REGISTRATION = env.bool('DJANGO_ACCOUNT_ALLOW_REGISTRATION', True)
 # Custom user app defaults
 # Select the correct user model
 # AUTH_USER_MODEL = 'users.User'
-LOGIN_REDIRECT_URL = '/'
-LOGIN_URL = 'login'
-# LOGOUT_REDIRECT_URL = '/'
-
-
+LOGIN_URL = env('LOGIN_URL', default='login')
+LOGIN_REDIRECT_URL = env('LOGIN_REDIRECT_URL', default='/')
+LOGOUT_REDIRECT_URL = env('LOGOUT_REDIRECT_URL', default='/')
 
 
 # Location of root django.contrib.admin URL, use {% raw %}{% url 'admin:index' %}{% endraw %}
-ADMIN_URL = r'^admin/'
+ADMIN_URL = env('ADMIN_URL', default=r'^admin/')
 
 # Your common stuff: Below this line define 3rd party library settings
 # ------------------------------------------------------------------------------
