@@ -234,6 +234,9 @@ System check identified no issues (0 silenced).
 $ python manage.py migrate
 $ python manage.py collectstatic
 $ python manage.py createsuperuser
+
+cd /sites/
+sudo chown -R carl:worker quod/
 ```
 
 
