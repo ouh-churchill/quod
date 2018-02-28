@@ -170,7 +170,9 @@ class MultiPage(Page):
         ('text', blocks.RichTextBlock()),
         ('image', ImageChooserBlock()),
         ('table', TableBlock(template="website/blocks/table.html")),
-        ('publications_list', blocks.ListBlock(SnippetChooserBlock(Publication, label="publication"))),
+        ('publications_list', blocks.ListBlock(SnippetChooserBlock(Publication, label="publication"),
+                                               template="website/blocks/publications_list.html")),
+        ('projects_list', blocks.ListBlock(SnippetChooserBlock(Project, label="project"))),
         ('qa_list', blocks.ListBlock(QandABlock(label="entry"), template="website/blocks/qa_list.html")),
     ])
     date = models.DateField("Post date")
