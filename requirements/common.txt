@@ -1,8 +1,8 @@
-Django
-wagtail
-docutils
-django-environ
-markdown
+Django>=2
+wagtail>=2
+docutils==0.14
+django-environ==0.4.4
+markdown==2.6.11
 
 pytz
 pip

@@ -6,23 +6,27 @@ from django import template
 
 register = template.Library()
 
+
 @register.simple_tag
 def get_model_fields(object_to_query):
     return dict(
         (field.name, field.value_to_string(object_to_query)) for field in object_to_query._meta.fields
     )
 
+
 @register.simple_tag
 def get_model_dir(object_to_query):
     return dir(object_to_query)
+
 
 @register.simple_tag
 def get_model_type(object_to_query):
     return type(object_to_query)
 
+
 # MENUS
 # From https://github.com/wagtail/wagtaildemo/blob/master/demo/templatetags/demo_tags.py
-@register.assignment_tag(takes_context=True)
+@register.simple_tag(takes_context=True)
 def get_site_root(context):
     # NB this returns a core.Page, not the implementation-specific model used
     # so object-comparison to self will return false as objects would differ
@@ -31,6 +35,7 @@ def get_site_root(context):
 
 def has_menu_children(page):
     return page.get_children().live().in_menu().exists()
+
 
 # Retrieves the top menu items - the immediate children of the parent page
 # The has_menu_children method is necessary because the bootstrap menu requires
@@ -51,6 +56,7 @@ def top_menu(context, parent, calling_page=None):
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
     }
+
 
 # Retrieves the children of the top menu items for the drop downs
 @register.inclusion_tag('includes/navbar_children.html', takes_context=True)
