@@ -1,0 +1,38 @@
+{% block content %}
+    <h2>Sessions</h2>
+<form>   
+	<table>
+	<tr>
+		<th> <input type="submit" value="Save"/> </th>
+		<th> <input type="text" name="Name"/> </th>
+		<th> <input type="text" name="ID"/> </th>
+		<th> <input type="submit" value="Cancel"/> </th>
+	</tr>
+	</table>
+	
+	<table>
+	<tr>
+	<th> ID </th>
+	<th> Name </th>
+	<th> Date </th>
+	<th> Dictionary </th>
+	<th> Variables </th>
+	<th> </th>
+	<th> </th>
+	</tr>
+        {% for session in object_list %}
+		<tr>
+			<td>{{session.SessionID }}</td>
+            <td>{{session.SessionName }}</td>
+			<td>{{session.SessionTimeStamp}}</td>
+			<td>{{session.SessionVersion}}</td>
+			<td>{{session.SessionVariablesNumber}}</td>
+			<td> <input type="submit" value="Edit"/>
+			<td> <input type="submit" value="Archive"/>
+		</tr>
+        {% endfor %}
+    
+	</table>
+	
+</form>  	
+{% endblock %}

@@ -1,0 +1,21 @@
+{% block content %}
+	<table>
+	<tr>
+	<th> ID </th>
+	<th> Name </th>
+	<th> Description </th>
+	</tr>
+        {% for newvariable in object_list %}
+		<tr>
+		{% if newvariable.section == "5" %}
+			<td>{{newvariable.id }}</td>
+            <td>{{newvariable.name }}</td>
+			<td><code>{{newvariable.description}}</code></td>
+		{% endif %}	
+		</tr>
+        {% endfor %}
+ 	<table>
+	
+	
+	
+{% endblock %}

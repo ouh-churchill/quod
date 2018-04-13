@@ -1,0 +1,90 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Accordion - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+{% for newcategory in category %}
+
+<script>
+$(document).ready(function(){
+    $("#flip{{newcategory.id}}").click(function(){
+        $("#panel{{newcategory.id}}").slideToggle("slow");
+    });
+});
+</script>
+
+<script>
+              $( function() {
+                $( "#accordion{{newcategory.id}}" ).accordion();
+              } );
+</script>
+
+{% endfor %} 
+  
+  <style>
+.panel, .flip {
+    padding: 5px;
+    text-align: left;
+    background-color: #eee;
+    border: solid 1px #c3c3c3;
+}
+
+.flip:hover {
+    background-color: #ccc;
+}
+
+.panel {
+    padding: 50px;
+    display: none;
+}
+</style>
+  
+  
+</head>
+
+<body>
+
+{% block content %}
+
+{% for newcategory in category %}
+<h3>{{newcategory.name}}</h3>
+	{% for newsection in section %}
+    </div>
+		{% if newsection.category_id == newcategory.id %}
+            
+            <div id="flip{{newcategory.id}}" class="flip">{{newsection.name}}</div>
+            <div id="panel1" class="panel">
+            <table>
+			<tr>
+			<th> ID </th>
+			<th> Name </th>
+			<th> Description </th>
+			</tr>
+			{% for newvariable in variable %}
+				{% if newvariable.category == newcategory.id and newvariable.section == newsection.level %}
+					<tr>
+						<td>{{newvariable.id }}</td>
+						<td>{{newvariable.name }}</td>
+						<td>{{newvariable.description}}</td>
+					</tr>
+				{% endif %}
+			{% endfor %}
+			<table>
+            </div>
+            </div>
+		{% endif %}
+
+	{% endfor %}
+   
+   
+{% endfor %}	
+
+{% endblock %}
+
+</body>
+</html>
