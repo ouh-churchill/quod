@@ -1,0 +1,91 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Accordion - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<style>
+table {
+    border-collapse: collapse;
+}
+
+table, td, th {
+    border: 1px solid black;
+}
+</style>
+  
+<script>
+            
+  $( function() {
+    $( "#AccordionOuter" ).accordion({
+      heightStyle: "content", collapsible: true, active: false
+    });
+  } );
+        
+</script>
+  
+{% for newcategory in category %}
+<script>
+            
+  $( function() {
+    $( "#AccordionInner{{newcategory.id}}" ).accordion({
+      heightStyle: "content", collapsible: true, active: false
+    });
+  } );
+        
+</script>
+
+{% endfor %} 
+  
+</head>
+
+<body>
+
+{% block content %}
+
+<div id="AccordionOuter">
+{% for newcategory in category %}
+<h3>{{newcategory.name}}</h3>
+<div id="AccordionInner{{newcategory.id}}">
+	{% for newsection in section %}
+		{% if newsection.category_id == newcategory.id %}
+            <h3>{{newsection.name}}</h3>
+            <div> 
+            <table style="height:auto">
+			  <col width="45">
+              <col width="275">
+              <col width="550">
+            <tr>
+			<th> ID </th>
+			<th> Name </th>
+			<th> Description </th>
+			</tr>
+			{% for newvariable in variable %}
+				{% if newvariable.category == newcategory.id and newvariable.section == newsection.level %}
+					<tr>
+						<td><center>{{newvariable.id }}</center></td>
+						<td>{{newvariable.name }}</td>
+						<td>{{newvariable.description|safe}}</td>
+					</tr>
+				{% endif %}
+			{% endfor %}
+			</table>
+            </div> 
+
+		{% endif %}
+
+	{% endfor %}
+    
+</div>
+   
+{% endfor %}	
+
+</div>
+{% endblock %}
+
+</body>
+</html>
