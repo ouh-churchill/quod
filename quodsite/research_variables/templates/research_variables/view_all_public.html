@@ -28,11 +28,11 @@ table, td, th {
         
 </script>
   
-{% for newcategory in category %}
+{% for category in category_object %}
 <script>
             
   $( function() {
-    $( "#AccordionInner{{newcategory.id}}" ).accordion({
+    $( "#AccordionInner{{category.id}}" ).accordion({
       heightStyle: "content", collapsible: true, active: false
     });
   } );
@@ -48,12 +48,12 @@ table, td, th {
 {% block content %}
 
 <div id="AccordionOuter">
-{% for newcategory in category %}
-<h3>{{newcategory.name}}</h3>
-<div id="AccordionInner{{newcategory.id}}">
-	{% for newsection in section %}
-		{% if newsection.category_id == newcategory.id %}
-            <h3>{{newsection.name}}</h3>
+{% for category in category_object %}
+<h3>{{category.name}}</h3>
+<div id="AccordionInner{{category.id}}">
+	{% for section in section_object %}
+		{% if section.category_id == category.id %}
+            <h3>{{section.name}}</h3>
             <div> 
             <table style="height:auto">
 			  <col width="45">
@@ -64,12 +64,12 @@ table, td, th {
 			<th> Name </th>
 			<th> Description </th>
 			</tr>
-			{% for newvariable in variable %}
-				{% if newvariable.category == newcategory.id and newvariable.section == newsection.level %}
+			{% for variable in variable_object %}
+				{% if variable.category == category.id and variable.section == section.level %}
 					<tr>
-						<td><center>{{newvariable.id }}</center></td>
-						<td>{{newvariable.name }}</td>
-						<td>{{newvariable.description|safe}}</td>
+						<td><center>{{variable.id }}</center></td>
+						<td>{{variable.name }}</td>
+						<td>{{variable.description|safe}}</td>
 					</tr>
 				{% endif %}
 			{% endfor %}

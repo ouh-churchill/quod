@@ -40,10 +40,10 @@ class ViewAllPublic(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(ViewAllPublic, self).get_context_data(**kwargs)
-        context['category'] = Category.objects.all()  # .get() to do specific query
-        context['section'] = Section.objects.all()
-        context['session'] = Session.objects.all()
-        context['variable'] = Variable.objects.all()
+        context['category_object'] = Category.objects.all()  # .get() to do specific query
+        context['section_object'] = Section.objects.all()
+        context['session_object'] = Session.objects.all()
+        context['variable_object'] = Variable.objects.all()
         return context
 
 
