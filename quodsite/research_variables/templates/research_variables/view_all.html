@@ -29,11 +29,11 @@ table, td, th {
         
 </script>
 
-{% for newcategory in category %}
+{% for category in category_object %}
 <script>
             
   $( function() {
-    $( "#AccordionInner{{newcategory.id}}" ).accordion({
+    $( "#AccordionInner{{category.id}}" ).accordion({
       heightStyle: "content", collapsible: true, active: false
     });
   } );
@@ -53,8 +53,8 @@ table, td, th {
 	<table>
 	<tr>
 		<th> <input type="submit" value="Save"/> </th>
-		<th> {{form.name.label_tag}}{{form.name}}  </th>
-		<th> {{form.session.label_tag}}{{form.session}} </th>
+		<!--<th> {{form_object.name.label_tag}}{{form.name}}  </th>
+		<th> {{form_object.session.label_tag}}{{form.session}} </th> -->
 		<th> <input type="reset" value="Cancel"/> </th>
 	</tr>
 	</table>
@@ -69,13 +69,13 @@ table, td, th {
 	<th> </th>
 	<th> </th>
 	</tr>
-        {% for newsession in session %}
+        {% for session in session_object %}
 		<tr>
-			<td>{{newsession.session }}</td>
-            <td>{{newsession.name }}</td>
-			<td>{{newsession.timestamp}</td>
-			<td>{{newsession.version}}</td>
-			<td>{{newsession.variables}}</td>
+			<td>{{session.session }}</td>
+            <td>{{session.name }}</td>
+			<td>{{session.timestamp}</td>
+			<td>{{session.version}}</td>
+			<td>{{session.variables}}</td>
 			<!--<td> <input type="submit" value="Edit"/>
 			<td> <input type="submit" value="Archive"/>-->
 		</tr>
@@ -83,12 +83,12 @@ table, td, th {
 	</table>
 
 <div id="AccordionOuter">
-{% for newcategory in category %}
-<h3>{{newcategory.name}}</h3>
-<div id="AccordionInner{{newcategory.id}}">
-	{% for newsection in section %}
-		{% if newsection.category_id == newcategory.id %}
-            <h3>{{newsection.name}}</h3>
+{% for category in category_object %}
+<h3>{{category.name}}</h3>
+<div id="AccordionInner{{category.id}}">
+	{% for section in section_object %}
+		{% if section.category_id == category.id %}
+            <h3>{{section.name}}</h3>
             <div> 
             <table style="height:auto">
 			  <col width="75">
@@ -101,13 +101,13 @@ table, td, th {
 			<th> Name </th>
 			<th> Description </th>
 			</tr>
-			{% for newvariable in variable %}
-				{% if newvariable.category == newcategory.id and newvariable.section == newsection.level %}
+			{% for variable in variable_object %}
+				{% if variable.category == category.id and variable.section == section.level %}
 					<tr>
-                        <td><center><input type="checkbox" name="variables" value="{{newvariable.id}}" ID="id_variables_{{newvariable.id}}"/></center></td>
-						<td><center>{{newvariable.id }}</center></td>
-						<td>{{newvariable.name }}</td>
-						<td>{{newvariable.description|safe}}</td>
+                        <td><center><input type="checkbox" name="variables" value="{{variable.id}}" ID="id_variables_{{variable.id}}"/></center></td>
+						<td><center>{{variable.id }}</center></td>
+						<td>{{variable.name }}</td>
+						<td>{{variable.description|safe}}</td>
 					</tr>
 				{% endif %}
 			{% endfor %}
@@ -118,12 +118,14 @@ table, td, th {
 </div> 
 {% endfor %}	
 </div>
-</form>
-{% endblock %}
 
 <h1>FORM</h1>
 
-{{form}}
+{{form_object}}
+
+</form>
+{% endblock %}
+
 
 
 

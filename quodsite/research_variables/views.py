@@ -18,16 +18,16 @@ class ViewAll(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(ViewAll, self).get_context_data(**kwargs)
-        context['category'] = Category.objects.all()  # .get() to do specific query
-        context['section'] = Section.objects.all()
-        context['session'] = Session.objects.all()
-        context['variable'] = Variable.objects.all()
-        context['form'] = SaveSession(self.request.POST or None)
+        context['category_object'] = Category.objects.all()  # .get() to do specific query
+        context['section_object'] = Section.objects.all()
+        context['session_object'] = Session.objects.all()
+        context['variable_object'] = Variable.objects.all()
+        context['form_object'] = SaveSession(self.request.POST or None)
         return context
 
     def post(self, request, *args, **kwargs):
         context = self.get_context_data()
-        if context["form"].is_valid():
+        if context['form_object'].is_valid():
             print('Data collected')
         return super(TemplateView, self).render_to_response(context)
 
