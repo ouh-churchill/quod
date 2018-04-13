@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Title</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Accordion - Default functionality</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table, td, th {
+            border: 1px solid black;
+        }
+    </style>
+
+    <script>
+
+        $(function () {
+            $("#AccordionOuter").accordion({
+                heightStyle: "content", collapsible: true, active: false
+            });
+        });
+
+    </script>
+    <!-- Variables 3? -->
+    {{ object_list }}
+    <!-- End var -->
+
+    {% for newcategory in object_list.variables %}
+        <script>
+
+            $(function () {
+                $("#AccordionInner{{newcategory.id}}").accordion({
+                    heightStyle: "content", collapsible: true, active: false
+                });
+            });
+
+        </script>
+    {% endfor %}
+</head>
+<body>
+<h2>Sessions</h2>
+<form method="post">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <th><input type="submit" value="Save"/></th>
+            <th> {{ form.name.label_tag }}{{ form.name }}  </th>
+            <th> {{ form.session.label_tag }}{{ form.session }} </th>
+            <th><input type="reset" value="Cancel"/></th>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <th> ID</th>
+            <th> Name</th>
+            <th> Date</th>
+            <th> Dictionary</th>
+            <th> Variables</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </table>
+
+</body>
+</html>
