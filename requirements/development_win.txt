@@ -1,0 +1,8 @@
+-r common.txt
+
+coverage
+django-debug-toolbar
+ipython
+django-extensions
+selenium
+
