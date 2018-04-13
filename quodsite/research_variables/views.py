@@ -2,10 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import TemplateView, ListView
 
-from .models import NewSession
-from .models import NewVariable
-from .models import NewCategory
-from .models import NewSection
+from .models import Session
+from .models import Variable
+from .models import Category
+from .models import Section
 from .forms import SaveSession
 
 
@@ -18,10 +18,10 @@ class ViewAll(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(ViewAll, self).get_context_data(**kwargs)
-        context['category'] = NewCategory.objects.all()  # .get() to do specific query
-        context['section'] = NewSection.objects.all()
-        context['session'] = NewSession.objects.all()
-        context['variable'] = NewVariable.objects.all()
+        context['category'] = Category.objects.all()  # .get() to do specific query
+        context['section'] = Section.objects.all()
+        context['session'] = Session.objects.all()
+        context['variable'] = Variable.objects.all()
         context['form'] = SaveSession(self.request.POST or None)
         return context
 
@@ -40,12 +40,12 @@ class ViewAllPublic(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(ViewAllPublic, self).get_context_data(**kwargs)
-        context['category'] = NewCategory.objects.all()  # .get() to do specific query
-        context['section'] = NewSection.objects.all()
-        context['session'] = NewSession.objects.all()
-        context['variable'] = NewVariable.objects.all()
+        context['category'] = Category.objects.all()  # .get() to do specific query
+        context['section'] = Section.objects.all()
+        context['session'] = Session.objects.all()
+        context['variable'] = Variable.objects.all()
         return context
 
 
 class ViewAllForm(ListView):
-    model = NewSession
+    model = Session

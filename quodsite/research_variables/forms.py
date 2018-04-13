@@ -1,13 +1,13 @@
 from django import forms
 
-from quodsite.research_variables.models import NewSession, NewVariable
+from quodsite.research_variables.models import Session, Variable
 
 
 class SaveSession(forms.ModelForm):
-    variables = forms.ModelMultipleChoiceField(queryset=NewVariable.objects.all())
+    variables = forms.ModelMultipleChoiceField(queryset=Variable.objects.all())
 
     class Meta:
-        model = NewSession
+        model = Session
         fields = ['session', 'name', 'variables']
 
     def __init__(self, *args, **kwargs):

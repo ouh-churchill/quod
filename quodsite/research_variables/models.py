@@ -3,7 +3,7 @@ from django.db import models
 
 # Data storage models
 
-class NewVariable(models.Model):
+class Variable(models.Model):
     # Contains the information about the variables
     version = models.PositiveIntegerField()
     category = models.PositiveIntegerField()
@@ -12,12 +12,12 @@ class NewVariable(models.Model):
     description = models.TextField()
 
 
-class NewSession(models.Model):
+class Session(models.Model):
     user = models.CharField(max_length=45)
     session = models.PositiveIntegerField()
     version = models.CharField(max_length=45)
     timestamp = models.CharField(max_length=45)
-    variables = models.ManyToManyField(NewVariable)
+    variables = models.ManyToManyField(Variable)
     name = models.CharField(max_length=45)
     saves = models.PositiveIntegerField()
     archived = models.BooleanField()
@@ -31,11 +31,11 @@ class DictionaryStructure(models.Model):
     DictionaryVersion = models.CharField(max_length=45)
 
 
-class NewCategory(models.Model):
+class Category(models.Model):
     name = models.CharField(max_length=255)
 
 
-class NewSection(models.Model):
+class Section(models.Model):
     level = models.PositiveIntegerField()
-    category = models.ForeignKey(NewCategory, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
