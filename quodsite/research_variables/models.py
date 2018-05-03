@@ -1,15 +1,22 @@
 from django.db import models
 
+#Models that are in use:    
+class Category(models.Model):
+    name = models.CharField(max_length=255)
 
-# Data storage models
+
+class Section(models.Model):
+#    level = models.PositiveIntegerField()
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
 
 class Variable(models.Model):
-    # Contains the information about the variables
-    version = models.PositiveIntegerField()
-    category = models.PositiveIntegerField()
-    section = models.PositiveIntegerField()
+#    version = models.PositiveIntegerField()
+#    category = models.PositiveIntegerField()
+    section = models.ForeignKey(Section, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     description = models.TextField()
+
 
 
 class Session(models.Model):
@@ -31,11 +38,4 @@ class DictionaryStructure(models.Model):
     DictionaryVersion = models.CharField(max_length=45)
 
 
-class Category(models.Model):
-    name = models.CharField(max_length=255)
 
-
-class Section(models.Model):
-    level = models.PositiveIntegerField()
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    name = models.CharField(max_length=255)
