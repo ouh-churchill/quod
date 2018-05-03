@@ -58,7 +58,7 @@ table, td, th {
 			<th> Description </th>
 			</tr>
 			{% for variable in variable_object %}
-				{% if variable.section == section.id %}
+				{% if variable.category == category.id and variable.section == section.level %}
 					<tr>
 						<td><center>{{variable.id }}</center></td>
 						<td>{{variable.name }}</td>
